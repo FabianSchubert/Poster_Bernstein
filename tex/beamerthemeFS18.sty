@@ -24,6 +24,8 @@
 \definecolor{ETH10}{RGB}{130,190,30}
 \definecolor{tlg}{RGB}{230,230,230}
 
+\definecolor{grau2}{rgb}{0.89411765,  0.89019608,  0.86666667}
+
 \usefonttheme[onlymath]{serif}
 
 
@@ -61,6 +63,14 @@
 
 \setbeamerfont*{block title}{series=\bfseries,size={\fontsize{36}{5}}}
 
+
+\setbeamerfont*{bibliography item}{size={\fontsize{26pt}{32pt}}}
+\setbeamerfont*{bibliography entry author}{size={\fontsize{26pt}{32pt}}}
+\setbeamerfont*{bibliography entry title}{size={\fontsize{26pt}{32pt}}}
+\setbeamerfont*{bibliography entry location}{size={\fontsize{26pt}{32pt}}}
+\setbeamerfont*{bibliography entry note}{size={\fontsize{26pt}{32pt}}}
+
+
 \newenvironment{myblock}[1]
 {\begin{block}{#1}
 \fontsize{26pt}{32pt}\selectfont
@@ -68,6 +78,21 @@
 }
 {\end{block}
 }
+
+\newenvironment{conclusions}[1]{
+\setbeamercolor{block body}{fg=black, bg=grau2}
+\begin{block}{#1}
+\fontsize{26pt}{32pt}\selectfont
+\rule[10pt]{\textwidth}{2pt}
+}
+{\end{block}
+}
+
+\newenvironment<>{emphblock}[1]{% emphasised block environment
+\setbeamercolor{block title}{fg=leitfarbe,bg=white}%
+\setbeamercolor{block body}{bg=grau2}
+\begin{block}#2{#1}}{\end{block}}
+
 
 
 %\newenvironment<>{myblock}[1]{%
@@ -138,7 +163,7 @@
 	\begin{beamercolorbox}[ht=4ex,leftskip=1cm,rightskip=1cm]{author in head/foot}%
 		\href{http://www.itp.uni-frankfurt.de/}{www.itp.uni-frankfurt.de}
 		\hfill
-		\today
+		\insertdate
 		\hfill
 		\href{mailto:fschubert@itp.uni-frankfurt.de}{fschubert@itp.uni-frankfurt.de}
 		\vskip1ex
@@ -152,6 +177,7 @@
 
 %Some beamer customizations:
 \setbeamertemplate{bibliography item}[text]
+\setbeamerfont*{bibliography item}{size={\fontsize{26pt}{32pt}}}
 \setbeamertemplate{caption}[numbered]{}% Number float-like environments
 
 \mode<all>
